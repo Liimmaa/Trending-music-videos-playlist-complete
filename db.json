@@ -1,9 +1,14 @@
 {
-    "signup": [
-        {
-            "id": 1,
-            "email": "chioma@gmail.com",
-            "password": "12"
-        }
-    ]
+  "signup": [
+    {
+      "id": 1,
+      "email": "chioma@gmail.com",
+      "password": "12"
+    },
+    {
+      "email": "chioma@gmail.com",
+      "password": "12345",
+      "id": 2
+    }
+  ]
 }
