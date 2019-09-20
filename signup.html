@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="css/signup.css">
+    <title>Youtube trending music</title>
+</head>
+
+<body>
+   <div id="container">
+
+    <h1 class="heading">Trending Music Videos</h1>
+    <a href="login.html"> <input class="button" type="button" name="" value="Sign In"></a>
+
+    </div>
+
+  
+
+    <div class="login-box">
+        <h1>SignUp</h1>
+
+        <div class="text-box">
+                <i class="fa fa-envelope" aria-hidden="true"></i>
+            <input type="text" id="email" placeholder="Email Address" name="" value="">
+        </div>
+
+        <div class="text-box">
+                <i class="fa fa-lock" aria-hidden="true"></i>
+            <input type="password" id="password" placeholder=Password name="" value="">
+        </div>
+
+        <input class="btn" id="signup-btn" type="button" name="" value="Sign up">
+    </div>
+
+    <script src="./jquery.js"></script>
+    <script>  
+    $(document).ready(function(){
+        $('#signup-btn').on("click",function () {
+
+        
+        let email = $('#email').val();
+        let password = $('#password').val();
+
+        let error;
+
+        if(email === "" || password === "") {
+            error = true;
+            document.getElementById('error').innerHTML = "Please fill in all fields";
+        } 
+        
+
+        if (!error) {
+            data = {
+                email,
+                password
+            }
+
+            $.ajax({
+            url: 'http://localhost:3000/signup',
+            type: 'POST',
+            cache: false,
+            data: data,
+            success: function () {
+            window.location.href = 'login.html';      
+            },
+        });
+    } 
+    else {
+        console.log('error');   
+        }
+    });
+});
+    </script>
+   
+</body>
+</html>
