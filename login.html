@@ -22,17 +22,60 @@
 
         <div class="text-box">
                 <i class="fa fa-envelope" aria-hidden="true"></i>
-            <input type="text" placeholder="Email Address" name="" value="">
+            <input type="text" id="email" placeholder="Email Address" name="" value="">
         </div>
 
         <div class="text-box">
                 <i class="fa fa-lock" aria-hidden="true"></i>
-            <input type="password" placeholder=Password name="" value="">
+            <input type="password" id="password" placeholder=Password name="" value="">
         </div>
 
-        <input class="btn" type="button" name="" value="Log in">
+        <input class="btn" id="login-btn" type="button" name="" value="Log in">
     </div>
     
-    <script type="text/javascript" src="assets/js/script.js"></script>
+    <script type="text/javascript" src="jquery.js"></script>
+    <script>
+   $(document).ready(function(){
+     $('#login-btn').on("click", function () {
+        let email = $('#email').val();
+        let password = $('#password').val();
+
+        let error;
+        if(email === "" || password === "") {
+            error = true;
+           // document.getElementById('error').innerHTML = "Please fill in both fields";
+        } 
+
+        if (!error) {
+           
+            $.ajax({
+                url: 'http://localhost:3000/signup',
+                type: 'GET',
+                cache: false,
+                // data: data,
+                success: function (data) {
+                   
+                data.forEach(e => {
+            
+                    console.log(e);
+                    if ((e.email !== email) && (e.password !== password)) {
+                      //  document.getElementById('error').innerHTML = "email address or password is incorrect";
+                    
+                    }
+                    else {
+
+                        window.location.href = 'trends.html'   
+                    }
+                });   
+                },
+            });
+        }
+        else {
+            console.log(error);
+        }
+    });
+});
+
+</script>
 </body>
 </html>

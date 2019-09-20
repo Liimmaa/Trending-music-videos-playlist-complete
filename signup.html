@@ -34,16 +34,17 @@
         <input class="btn" id="signup-btn" type="button" name="" value="Sign up">
     </div>
 
+    <script src="./jquery.js"></script>
     <script>  
-    $(document).readr(function(){
-        $('#signup-btn').click(function () {
+    $(document).ready(function(){
+        $('#signup-btn').on("click",function () {
 
         
         let email = $('#email').val();
         let password = $('#password').val();
 
         let error;
-        
+
         if(email === "" || password === "") {
             error = true;
             document.getElementById('error').innerHTML = "Please fill in all fields";
@@ -62,7 +63,7 @@
             cache: false,
             data: data,
             success: function () {
-            window.location.href = 'trends.html';      
+            window.location.href = 'login.html';      
             },
         });
     } 
